@@ -42,4 +42,8 @@ SELECT students.name,students.surname, degrees.name,departments.name FROM studen
 5- Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
 SELECT degrees.name, courses.name, teachers.name, teachers.surname FROM degrees
-INNER JOIN courses ON degrees.id = courses.degree_id INNER JOIN course_teacher ON courses.id = course_teacher course_id INNER JOIN teachers ON teachers.id = course_teacher.teacher_id
+INNER JOIN courses ON degrees.id = courses.degree_id INNER JOIN course_teacher ON courses.id = course_teacher course_id INNER JOIN teachers ON teachers.id = course_teacher.teacher_id;
+
+6- Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+SELECT teachers.name, teachers.surname, departments.name FROM course_teacher INNER JOIN teachers ON course_teacher.teacher_id = teachers.id INNER JOIN courses ON course_teacher.course_id = courses.id INNER JOIN degrees ON courses.degree_id= degrees.id INNER JOIN departments ON degrees.department_id = departments.id WHERE departments.name = 'Dipartimento di matematica';
